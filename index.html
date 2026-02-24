@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voxel World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loading screen -->
+    <div id="loading">Loading Voxel World…</div>
+
+    <!-- Inventory bar -->
+    <div id="inventory">
+        <div class="slot selected" data-block="grass">G</div>
+        <div class="slot" data-block="sand">S</div>
+        <div class="slot" data-block="snow">N</div>
+        <div class="slot" data-block="stone">T</div>
+    </div>
+
+    <!-- Main game script -->
+    <script type="module" src="main.js"></script>
+
+    <script>
+        // Hide loading screen once page loads
+        window.onload = () => {
+            document.getElementById("loading").style.display = "none";
+        };
+
+        // Inventory selection logic
+        const slots = document.querySelectorAll(".slot");
+        slots.forEach(slot => {
+            slot.addEventListener("click", () => {
+                slots.forEach(s => s.classList.remove("selected"));
+                slot.classList.add("selected");
+            });
+        });
+    </script>
+
+</body>
+</html>
