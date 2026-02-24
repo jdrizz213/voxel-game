@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Voxel World</title>
+    <title>Shards of the Voxel Seed</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- Title screen -->
+    <div id="title-screen">
+        <div id="title-logo">Shards of the Voxel Seed</div>
+        <button id="play-button">Play</button>
+    </div>
 
     <!-- Loading screen -->
     <div id="loading">Loading Voxel World…</div>
@@ -18,18 +24,22 @@
         <div class="slot" data-block="sand">S</div>
         <div class="slot" data-block="snow">N</div>
         <div class="slot" data-block="stone">T</div>
+        <div class="slot" data-block="crystal">C</div>
     </div>
 
-    <!-- Main game script -->
+    <!-- Crafting bar -->
+    <div id="crafting">
+        <button id="craft-crystal">Craft Crystal (3 Stone)</button>
+        <span id="craft-info"></span>
+    </div>
+
     <script type="module" src="main.js"></script>
 
     <script>
-        // Hide loading screen once page loads
         window.onload = () => {
             document.getElementById("loading").style.display = "none";
         };
 
-        // Inventory selection logic
         const slots = document.querySelectorAll(".slot");
         slots.forEach(slot => {
             slot.addEventListener("click", () => {
@@ -37,7 +47,14 @@
                 slot.classList.add("selected");
             });
         });
+
+        const titleScreen = document.getElementById("title-screen");
+        const playButton = document.getElementById("play-button");
+        playButton.addEventListener("click", () => {
+            titleScreen.style.display = "none";
+        });
     </script>
 
 </body>
 </html>
+
